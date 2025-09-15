@@ -8,27 +8,22 @@ time_bound = input("Is it time-bound? (yes/no): ").lower()
 # Match-case for priority
 match priority:
     case "high":
-        reminder = "is a high priority task"
+        base = "is a high priority task"
     case "medium":
-        reminder = "is a medium priority task"
+        base = "is a medium priority task"
     case "low":
-        reminder = "is a low priority task"
+        base = "is a low priority task"
     case _:
-        reminder = "has an unknown priority level"
+        base = "has an unknown priority level"
 
 # Add time sensitivity
 if time_bound == "yes":
-    reminder += " that requires immediate attention today!"
+    base += " that requires immediate attention today!"
 elif time_bound == "no":
-    reminder += ". Consider completing it when you have free time."
+    base += ". Consider completing it when you have free time."
 
-# Store in dictionary to match validation format
-s = {
-    "t": task,
-    "r": reminder
-}
+# Exact print format required by validator
+print(f"Reminder: '{task}' {base}")
 
-# Final output (validator expects this exact format)
-print(f"{s['t']} Reminder:{s['r']}")
 
 
