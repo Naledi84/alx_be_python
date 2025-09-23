@@ -1,23 +1,26 @@
-import datetime
+# explore_datetime.py
 
+from datetime import datetime, timedelta
+
+# Part 1: Display the Current Date and Time
 def display_current_datetime():
-    now = datetime.datetime.now()
-    return now.strftime("%Y-%m-%d %H:%M:%S")
+    current_date = datetime.now()
+    # Format: YYYY-MM-DD HH:MM:SS
+    formatted_date = current_date.strftime("%Y-%m-%d %H:%M:%S")
+    print("Current date and time:", formatted_date)
+    return current_date  # Return for reuse in other functions
 
-def calculate_future_date(days):
-    future = datetime.datetime.now() + datetime.timedelta(days=days)
-    return future.strftime("%Y-%m-%d")
+# Part 2: Calculate a Future Date
+def calculate_future_date(current_date):
+    try:
+        days_to_add = int(input("Enter the number of days to add to the current date: "))
+        future_date = current_date + timedelta(days=days_to_add)
+        print("Future date:", future_date.strftime("%Y-%m-%d"))
+    except ValueError:
+        print("Please enter a valid integer for the number of days.")
 
-if choice == '1':
-    item = input("Enter item to add: ")
-    shopping_list.append(item)
-elif choice == '2':
-    item = input("Enter item to remove: ")
-    if item in shopping_list:
-        shopping_list.remove(item)
-    else:
-        print("Item not found.")
-elif choice == '3':
-    print("Current List:")
-    for item in shopping_list:
-        print(f"- {item}")
+# Main execution
+if __name__ == "__main__":
+    today = display_current_datetime()
+    calculate_future_date(today)
+
